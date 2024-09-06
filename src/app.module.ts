@@ -2,9 +2,9 @@ import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
-import { ContactModule } from './contact/contact.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthMiddleware } from './user/middleware/auth/auth.middleware';
+import { ContactModule } from './contact/contact.module';
 
 @Module({
   imports: [

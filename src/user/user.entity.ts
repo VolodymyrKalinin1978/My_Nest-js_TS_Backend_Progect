@@ -4,10 +4,12 @@ import {
   ObjectIdColumn,
   Column,
   BeforeInsert,
+  OneToMany,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { ContactEntity } from 'src/contact/contact.entity';
 
-@Entity()
+@Entity('users')
 export class UserEntity {
   @ObjectIdColumn()
   _id: ObjectId;
@@ -29,6 +31,9 @@ export class UserEntity {
 
   @Column({ default: false })
   verify: boolean;
+
+  @OneToMany((type) => ContactEntity, (post) => post.user)
+  contacts: ContactEntity[];
 
   @BeforeInsert()
   async hashPassword() {
